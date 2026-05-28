@@ -1,0 +1,64 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: feature/pynblint_fix
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx:
+      branch: main
+      repo: https://gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx git:
+        commands:
+        - /usr/bin/env sh .sqa/script.cinnabar_playful_dugong.sh
+        container: qc.acc_scarlet_confident_kookaburra
+  QC.Doc:
+    repos:
+      gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.turmeric_philosophical_tiger.sh
+        container: qc.doc_butterscotch_romantic_panda
+      gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx git:
+        commands:
+        - /usr/bin/env sh .sqa/script.violet_protective_manatee.sh
+        container: qc.doc_persimmon_perceptive_spren
+      gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.grape_devoted_rhinoceros.sh
+        container: qc.doc_malachite_energetic_seal
+  QC.Lic:
+    repos:
+      gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.polar_blissful_viper.sh
+        container: qc.lic_pumpkin_anxious_bear
+  QC.Sec:
+    repos:
+      gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.ecru_mindful_kangaroo.sh
+        container: qc.sec_emerald_kind_whale
+  QC.Sty:
+    repos:
+      gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.cosmos_practical_newt.sh
+        container: qc.sty_denim_confident_ibis
+  QC.Uni:
+    repos:
+      gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.dusk_timid_donkey.sh
+        container: qc.uni_rust_goofy_ibis
+  QC.Ver:
+    repos:
+      gricad-gitlab.univ-grenoble-alpes.fr/babylab-lpnc/felyx get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.lagoon_attentive_clownfish.sh
+        container: qc.ver_ivory_silly_grasshopper
+timeout: 5400
